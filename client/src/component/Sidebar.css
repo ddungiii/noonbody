@@ -1,0 +1,8 @@
+.sidebar {
+    background-color: #773bc5ab;
+    display: inline-block;
+}
+
+.sidebar:hover {
+    color: #f1f1f1;
+}
