@@ -23,7 +23,7 @@ function App() {
               <Route path="/" component={Cashes} />
             </Switch> */}
         </BrowserRouter>
-        <BodyImages />
+        <BodyImages className="bodyImage"/>
       </body>
     </div>
   );
