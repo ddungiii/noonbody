@@ -1,9 +1,9 @@
 import logo from './logo.png';
 import './App.css';
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Sidebar from "./component/Sidebar";
-import BodyImages from "./component/BodyImages"
+import BodyImages from "./component/BodyImages";
 
 
 
@@ -17,13 +17,10 @@ function App() {
       <body>
         <BrowserRouter>
           <Sidebar className="sidebar"></Sidebar>
-            {/* <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/" component={Members} />
-              <Route path="/" component={Cashes} />
-            </Switch> */}
+          <Routes>
+            <Route exact path="/" element={<BodyImages />} />
+          </Routes>
         </BrowserRouter>
-        <BodyImages className="bodyImage"/>
       </body>
     </div>
   );
