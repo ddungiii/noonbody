@@ -3,6 +3,9 @@ const db = require("../db");
 var router = express.Router();
 const multer = require("multer");
 const path = require("path");
+var fs = require("fs");
+const ImageModel = require("../models/image");
+const { callbackify } = require('util');
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -24,30 +27,20 @@ router.get("/", (req, res) => {
   });
 });
 
-// CREATE BOOK
-// router.post("/", (req, res) => {
-//   const image = req.body;
-//   db.add(image, (newImage) => {
-//     res.json(newImage);
-//   });
-// });
+router.post("/", upload.single("bodyImage"), (req, res, next) => {
+      const newImage = new ImageModel({
+          pose: req.body.pose,
+          date: req.body.date,
+          img: {
+              data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
+              contentType: 'image/jpeg'
+          }
+        })
 
-// for multer
-router.post("/", upload.single("bodyImage"), (req, res) => {
-  res.json(req.file);
+      db.add(newImage, (result) => {
+        res.json(result);
+      });
 });
-
-// router.post("/", (req, res) => {
-//   upload(req, res, (err) => {
-//     if (err) {
-//       return res.json({ err });
-//     }
-//     return res.json(
-//       req.file
-//     );
-//   });
-// });
-
 
 
 module.exports = router;

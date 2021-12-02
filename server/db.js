@@ -11,12 +11,7 @@ function getAll(callback) {
     })
 }
 
-function add(image, callback) {
-    const newImage = new ImageModel({
-        pose: image.pose,
-        date: image.date
-    });
-
+function add(newImage, callback) {
     newImage.save((error, result) => {
         callback(result);
     })
