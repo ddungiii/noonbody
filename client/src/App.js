@@ -4,21 +4,22 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Sidebar from "./component/Sidebar";
 import BodyImages from "./component/BodyImages";
+import Album from "./album";
+
+import CssBaseline from '@mui/material/CssBaseline';
 
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        NOONBODY
-      </header>
+      <CssBaseline />
       <body>
         <BrowserRouter>
-          <Sidebar className="sidebar"></Sidebar>
+          {/* <Sidebar className="sidebar"></Sidebar> */}
           <Routes>
             <Route exact path="/" element={<BodyImages />} />
+            <Route exact path="/test" element={<Album />} />
           </Routes>
         </BrowserRouter>
       </body>
