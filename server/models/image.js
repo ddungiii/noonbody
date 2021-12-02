@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
   
 var imageSchema = new mongoose.Schema({
-    pose: Number,
+    pose: String,
     date: Date,
     img:
     {
