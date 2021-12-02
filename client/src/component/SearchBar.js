@@ -135,7 +135,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <img src={logo} className="icon" alt="logo" sx={{ mr: 5 }} />
           <Typography className = "title" variant="h" color="inherit" noWrap>

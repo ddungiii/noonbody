@@ -71,7 +71,7 @@ export default function MainPage() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <PrimarySearchAppBar />
+      <PrimarySearchAppBar className = "menuBar"/>
       <div>
         <input type="radio" id="sortAsc" name="sorting" onClick={() => sortAsc(images)} />
         <label for="sortAsc">SORT ASC</label>
