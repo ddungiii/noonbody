@@ -12,7 +12,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import blue from '@mui/material/colors/blue';
 
 import './MainPage.css';
 import UploadImage from '../component/UploadImage';
@@ -29,6 +28,8 @@ const theme = createTheme({
     },
   },
 });
+
+
 
 function getFormatDate(dt){
   const date = moment(dt);
@@ -47,11 +48,36 @@ export default function MainPage() {
     });
   }, []);
   
+  function sortAsc(images) {
+    const _images = [...images];
+    _images.sort((a, b) => {
+      if (a.date > b.date) return 1;
+      else if (a.date === b.date) return 0;
+      else return -1;
+    })
+    setImages(_images);
+  }
+
+  function sortDesc(images) {
+    const _images = [...images];
+    _images.sort((a, b) => {
+      if (a.date > b.date) return -1;
+      else if (a.date === b.date) return 0;
+      else return 1;
+    })
+    setImages(_images);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <PrimarySearchAppBar />
-      
+      <div>
+        <input type="radio" id="sortAsc" name="sorting" onClick={() => sortAsc(images)} />
+        <label for="sortAsc">SORT ASC</label>
+        <input type="radio" id="sortDesc" name="sorting" onClick={() => sortDesc(images)} />
+        <label for="sortDesc">SORT Desc</label>
+      </div>
       <UploadImage />
       <main>
         <Container sx={{ py: 8 }}>
