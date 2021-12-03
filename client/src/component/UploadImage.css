@@ -1,15 +1,10 @@
-/* 
-.uploadImage {
-    display: inline;
-    margin: 20px;
-} */
+.upload {
+    padding: 15px;
+    align-items: center;
+    margin-top: 32px;
+}
 
 img {
     height: 300px;
     width: auto;
-}
-
-.upload {
-    padding-top: 50px;
-    align: center;
 }

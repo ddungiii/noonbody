@@ -5,7 +5,6 @@ const multer = require("multer");
 const path = require("path");
 var fs = require("fs");
 const ImageModel = require("../models/image");
-const { callbackify } = require('util');
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -19,8 +18,6 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-
-// GET images.
 router.get("/", (req, res) => {
   db.getAll((images) => {
     res.json(images);

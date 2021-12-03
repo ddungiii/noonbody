@@ -17,6 +17,7 @@ import './MainPage.css';
 import UploadImage from '../component/UploadImage';
 import moment from 'moment';
 import { PrimarySearchAppBar } from '../component/SearchBar';
+import BackDrop from "../component/BackDrop";
 
 const theme = createTheme({
   palette: {
@@ -28,8 +29,6 @@ const theme = createTheme({
     },
   },
 });
-
-
 
 function getFormatDate(dt){
   const date = moment(dt);
@@ -43,7 +42,6 @@ export default function MainPage() {
   useEffect(() => {
     axios.get('/api/images')
     .then(response => {
-      console.log(response)
       setImages(response.data);
     });
   }, []);
@@ -71,14 +69,16 @@ export default function MainPage() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <UploadImage />
+      <BackDrop />
       <PrimarySearchAppBar className = "menuBar"/>
-      <div>
+      <div className="sorting">
         <input type="radio" id="sortAsc" name="sorting" onClick={() => sortAsc(images)} />
         <label for="sortAsc">SORT ASC</label>
         <input type="radio" id="sortDesc" name="sorting" onClick={() => sortDesc(images)} />
         <label for="sortDesc">SORT Desc</label>
       </div>
-      <UploadImage />
+      
       <main>
         <Container sx={{ py: 8 }}>
         <Typography
@@ -86,21 +86,17 @@ export default function MainPage() {
           color="text.secondary"
           component="p"
         >
-          2019. 09. 14.
+          {/* 2019. 09. 14. */}
         </Typography>
-          <Grid container spacing={4}>
+          <Grid container spacing={1}>
             {images.length !== 0 &&
             images.map((image) => (
               <Grid item key={image._id} >
                 <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                  sx={{ display: 'flex', flexDirection: 'column' }}
                 >
                   <CardMedia
                     component="img"
-                    sx={{
-                      // 16:9
-                    //   pt: '56.25%',
-                    }}
                     image={`data:image/jpeg;base64,${Buffer.from((image.img.data.data)).toString('base64')}`}
                     alt="random"
                   />
@@ -110,10 +106,10 @@ export default function MainPage() {
                       {image.pose}
                     </Typography>
                   </CardContent>
-                  <CardActions>
+                  {/* <CardActions>
                     <Button size="small">DELETE</Button>
                     <Button size="small">Edit</Button>
-                  </CardActions>
+                  </CardActions> */}
                 </Card>
               </Grid>
             ))}

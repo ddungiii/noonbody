@@ -25,54 +25,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-////////
-// app.set("view engine", "ejs");
-
-// var storage = multer.diskStorage({
-//   destination: (req, file, db) => {
-//     createBrotliCompress(null, 'uploads')
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, file.filename + '-' + Date.now())
-//   }
-// });
-
-// var upload = multer({ storage: storage });
-
-// app.get('/', (req, res) => {
-//   ImageModel.find({}, (err, items) => {
-//       if (err) {
-//           console.log(err);
-//           res.status(500).send('An error occurred', err);
-//       }
-//       else {
-//           res.render('imagesPage', { items: items });
-//       }
-//   });
-// });
-
-// app.post('/', upload.single('image'), (req, res, next) => {
-  
-//   var obj = {
-//       name: req.body.name,
-//       desc: req.body.desc,
-//       img: {
-//           data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-//           // data: fs.readFileSync(path.join('/uploads/' + req.file.filename)),
-//           contentType: 'image/jpeg'
-//       }
-//   }
-//   ImageModel.create(obj, (err, item) => {
-//       if (err) {
-//           console.log(err);
-//       }
-//       else {       
-//           // item.save();
-//           res.redirect('/');
-//       }
-//   });
-// });
-
 app.use("/images", imageRouter);
 
 app.listen(port, "0.0.0.0", () => {
