@@ -69,9 +69,11 @@ export default function MainPage() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <UploadImage />
-      <BackDrop />
+      
       <PrimarySearchAppBar className = "menuBar"/>
+      
+      <UploadImage />
+      {/* <BackDrop /> */}
       <div className="sorting">
         <input type="radio" id="sortAsc" name="sorting" onClick={() => sortAsc(images)} />
         <label for="sortAsc">SORT ASC</label>
@@ -79,6 +81,7 @@ export default function MainPage() {
         <label for="sortDesc">SORT Desc</label>
       </div>
       
+
       <main>
         <Container sx={{ py: 8 }}>
         <Typography
