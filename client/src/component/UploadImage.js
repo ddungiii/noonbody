@@ -17,7 +17,7 @@ import Backdrop from '@mui/material/Backdrop';
 import useOutsideClick from './utils/useOutsideClick';
 import "./UploadImage.css";
 
-export default function UploadImage(props) {
+export default function UploadImage({ numImageAdded, setNumImageAdded }) {
   const [image, setImage] = useState(null);
   const [variant, setVariant] = useState("outlined");
   const [date, setDate] = useState(new Date());
@@ -45,7 +45,7 @@ export default function UploadImage(props) {
       setImage(null);
       setFile(null);
       setDate(new Date());
-      
+      setNumImageAdded(numImageAdded = numImageAdded + 1);
     })
   }
 
@@ -143,6 +143,9 @@ export default function UploadImage(props) {
         </Paper>
     </div>
     <Button variant="contained" onClick={()=>setOpen(false)}>X</Button>
+    
+
+    
     </Backdrop>
     </div>
   );
