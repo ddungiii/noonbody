@@ -1,6 +1,7 @@
 
 .App-logo {
   height: 100px;
+  vertical-align: middle;
 }
 
 
@@ -8,9 +9,8 @@
   background-color: #282c64;
   margin-top: 20px;
   display: block;
-  align-items: center;
   text-align: center;
-  font-size: calc(30px + 2vmin);
+  font-size: 50px;
   color: white;
   margin-left: 20px;
   margin-right: 20px;
@@ -19,4 +19,11 @@
 .sidebar {
   width: 200px;
   margin: 20px;
+  height: 200px;
 }
+/* 
+.bodyImage {
+  width: 400px;
+  display: inline;
+  margin: 20px;
+} */

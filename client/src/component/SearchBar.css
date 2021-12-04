@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+.icon {
+    height: 36px;
+    width: auto;
+}
+
+.title {
+    font-family: 'Bebas Neue', cursive;
+    font-size:xx-large;
+}
+
+/* .topBar {
+    padding: 50px;
+} */
