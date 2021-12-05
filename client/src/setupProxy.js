@@ -9,6 +9,7 @@ module.exports = function(app) {
     "/api",
     createProxyMiddleware({
       target: "http://localhost:8080",
+      // target: "http://ssal.sparcs.org:31237",
       changeOrigin: true,
       pathRewrite: {
         "^/api": ""

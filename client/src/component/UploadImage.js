@@ -109,7 +109,7 @@ export default function UploadImage({ numImageAdded, setNumImageAdded }) {
               name="pose"
             >
               <MenuItem value="Front Double Biceps" >Front Double Biceps</MenuItem>
-              <MenuItem value="Front Lat Spread">Front Double Biceps</MenuItem>
+              <MenuItem value="Front Lat Spread">Front Lat Spread</MenuItem>
               <MenuItem value="Side Chest">Side Chest</MenuItem>
               <MenuItem value="Back Double Biceps">Back Double Biceps</MenuItem>
               <MenuItem value="Abdominals and Thighs">Abdominals and Thighs</MenuItem>

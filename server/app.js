@@ -5,11 +5,12 @@ const bodyParser = require("body-parser");
 // var multer = require('multer');
 // const { createBrotliCompress } = require("zlib");
 const imageRouter = require('./routes/imageRouter');
+require('dotenv').config();
 
 const app = express();
 const port = 8080;
 
-mongoose.connect("mongodb://localhost:27017/noonbody", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
