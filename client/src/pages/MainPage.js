@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+
 import axios from "axios";
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -12,12 +13,19 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import moment from 'moment';
+import BackDrop from "../component/BackDrop";
 
 import './MainPage.css';
 import UploadImage from '../component/UploadImage';
-import moment from 'moment';
+
 import { PrimarySearchAppBar } from '../component/SearchBar';
-import BackDrop from "../component/BackDrop";
+
 
 const theme = createTheme({
   palette: {
@@ -38,13 +46,15 @@ function getFormatDate(dt){
 
 export default function MainPage() {
   const [images, setImages] = useState([]);
-  
+  const [numImages, setNumImages] = useState(0);
+  const [numImageAdded, setNumImageAdded] = useState(0);
+
   useEffect(() => {
     axios.get('/api/images')
     .then(response => {
       setImages(response.data);
-    });
-  }, []);
+    })
+  }, [numImageAdded]);
   
   function sortAsc(images) {
     const _images = [...images];
@@ -72,16 +82,30 @@ export default function MainPage() {
       
       <PrimarySearchAppBar className = "menuBar"/>
       
-      <UploadImage />
-      {/* <BackDrop /> */}
-      <div className="sorting">
-        <input type="radio" id="sortAsc" name="sorting" onClick={() => sortAsc(images)} />
-        <label for="sortAsc">SORT ASC</label>
-        <input type="radio" id="sortDesc" name="sorting" onClick={() => sortDesc(images)} />
-        <label for="sortDesc">SORT Desc</label>
-      </div>
-      
+      <UploadImage
+        numImageAdded={numImageAdded}
+        setNumImageAdded={setNumImageAdded}
+      />
 
+      <FormControl component="fieldset" sx={{ml:4, mt:4}}>
+      <FormLabel component="legend" >Date</FormLabel>
+      <RadioGroup row aria-label="date" name="sortingDate">
+        <FormControlLabel
+          value="Ascending"
+          control={<Radio />}
+          label="Ascending"
+          onClick={() => sortAsc(images)}
+        />
+        <FormControlLabel
+          value="Decending"
+          control={<Radio />}
+          label="Decending"
+          onClick={() => sortDesc(images)}
+        />
+      </RadioGroup>
+      </FormControl>
+      {/* <BackDrop /> */}
+      {/* {numImages} */}
       <main>
         <Container sx={{ py: 8 }}>
         <Typography
@@ -96,7 +120,7 @@ export default function MainPage() {
             images.map((image) => (
               <Grid item key={image._id} >
                 <Card
-                  sx={{ display: 'flex', flexDirection: 'column' }}
+                  sx={{ display: 'inline', flexDirection: 'column' }}
                 >
                   <CardMedia
                     component="img"
