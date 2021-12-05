@@ -89,7 +89,7 @@ export default function MainPage() {
 
       <FormControl component="fieldset" sx={{ml:4, mt:4}}>
       <FormLabel component="legend" >Date</FormLabel>
-      <RadioGroup row aria-label="date" name="sortingDate">
+      <RadioGroup aria-label="date" name="sortingDate">
         <FormControlLabel
           value="Ascending"
           control={<Radio />}
@@ -120,7 +120,7 @@ export default function MainPage() {
             images.map((image) => (
               <Grid item key={image._id} >
                 <Card
-                  sx={{ display: 'inline', flexDirection: 'column' }}
+                  sx={{ display: 'flex', flexDirection: 'column'}}
                 >
                   <CardMedia
                     component="img"
