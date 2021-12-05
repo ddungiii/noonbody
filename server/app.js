@@ -9,7 +9,8 @@ const imageRouter = require('./routes/imageRouter');
 const app = express();
 const port = 8080;
 
-mongoose.connect("mongodb://localhost:27017/noonbody", {
+// mongoose.connect("mongodb://localhost:27017/noonbody", {
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
