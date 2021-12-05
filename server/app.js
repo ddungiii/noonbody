@@ -10,7 +10,7 @@ const app = express();
 const port = 8080;
 
 // mongoose.connect("mongodb://localhost:27017/noonbody", {
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
