@@ -1,8 +1,4 @@
-.sidebar {
-    background-color: #773bc5ab;
-    display: inline-block;
-}
-
-.sidebar:hover {
-    color: #f1f1f1;
+.Sidebar {
+    padding-top: 80px;
+    padding-left: 20px;
 }

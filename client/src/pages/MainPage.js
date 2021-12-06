@@ -20,9 +20,11 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import moment from 'moment';
 import BackDrop from "../component/BackDrop";
+import Sidebar from '../component/Sidebar';
 
 import './MainPage.css';
 import UploadImage from '../component/UploadImage';
+import SortingRadio from "../component/SortingRadio"
 
 import { PrimarySearchAppBar } from '../component/SearchBar';
 
@@ -81,31 +83,13 @@ export default function MainPage() {
       <CssBaseline />
       
       <PrimarySearchAppBar className = "menuBar"/>
-      
-      <UploadImage
+      <Sidebar 
         numImageAdded={numImageAdded}
         setNumImageAdded={setNumImageAdded}
+        images={images}
+        setImages={setImages}
       />
-
-      <FormControl component="fieldset" sx={{ml:4, mt:4}}>
-      <FormLabel component="legend" >Date</FormLabel>
-      <RadioGroup aria-label="date" name="sortingDate">
-        <FormControlLabel
-          value="Ascending"
-          control={<Radio />}
-          label="Ascending"
-          onClick={() => sortAsc(images)}
-        />
-        <FormControlLabel
-          value="Decending"
-          control={<Radio />}
-          label="Decending"
-          onClick={() => sortDesc(images)}
-        />
-      </RadioGroup>
-      </FormControl>
-      {/* <BackDrop /> */}
-      {/* {numImages} */}
+      
       <main>
         <Container sx={{ py: 8 }}>
         <Typography
